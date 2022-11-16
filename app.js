@@ -3,14 +3,19 @@ const app = express()
 const mongoose = require('mongoose')
 const PORT = 4040
 require('dotenv/config')
+const postsRoutes = require('./routes/post')
+const getRoutes = require('./routes/get')
+app.use('/posts',postsRoutes)
+app.use(getRoutes)
 
 // Routes
-app.get('/', (req,res)=>{
-    res.send('Hello Guys')
-})
-app.get('/posts', (req,res)=>{
-    res.send('Hello Babes')
-})
+// app.get('/', (req,res)=>{
+//     res.send('Hello Guys')
+// })
+// I removed d below into d posts file dts in d routes folder and also required d routes/posts and used it inside a middleware
+// app.get('/posts', (req,res)=>{
+//     res.send('Hello Babes')
+// })
 // Connect to d DB
 mongoose.connect(
     process.env.DBURI
